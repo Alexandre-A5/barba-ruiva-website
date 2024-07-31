@@ -1,12 +1,20 @@
-
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Homepage from './pages/homepage/Homepage';
+import Navbar from './Components/Navbar/Navbar'
 import './App.css';
 
 function App() {
   return (
     <>
-        <h1>Projet Pro</h1>
+    <Navbar/>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+      </Routes>
+    </Router>
     </>
-  )
+  );
 }
 
 export default App;
