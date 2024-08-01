@@ -73,7 +73,7 @@
     top:-2px;
   }
   .profil-container{
-    margin-top:400px;
+    margin-top:200px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -116,7 +116,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top:400px;
+    margin-top:300px;
    
   }
 
@@ -132,7 +132,7 @@
     color:var(--second-color);
     font-size: 2em;
     font-weight: 800;
-    width: 50%;
+    width: 60%;
     margin:20px 0;
   }
 
@@ -226,6 +226,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
   pointer-events: auto; /* Allow pointer events */
+  background-color: var(--bg-color);
 }

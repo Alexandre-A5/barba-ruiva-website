@@ -1,0 +1,6 @@
+.contact-container h1{
+    color:var(--second-color);
+}
+.contact-container {
+    margin-top:100px;
+}

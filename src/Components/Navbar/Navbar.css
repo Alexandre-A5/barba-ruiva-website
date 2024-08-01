@@ -19,9 +19,10 @@ ul{
     justify-content: space-around;
     align-items: center;
 }
-li {
-    color: white;
+li a{
+    color: var(--second-color);
     list-style: none;
+    text-decoration: none;
     font-family: 'Montserrat', sans-serif;
     font-weight:200;
 }
