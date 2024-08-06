@@ -1,29 +1,41 @@
+import { Outlet, useLocation } from 'react-router-dom';
 import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import Homepage from './pages/homepage/Homepage';
 import Navbar from './Components/Navbar/Navbar';
-import Contact from './pages/contact/Contact';
 import Footer from './Components/Footer/Footer';
-import Prestation from './pages/prestation/Prestation';
 import './App.css';
-import { AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const App = () => {
   const location = useLocation();
   console.log("Location:", location.pathname); // Log the current location
 
   return (
-    <>
+    <div className="container-fluide">
       <Navbar />
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/prestation" element={<Prestation />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+      <AnimatePresence mode='wait'>
+        <motion.div
+          key={location.pathname}
+          initial="initialState"
+          animate="animateState"
+          exit="exitState"
+          transition={{ duration: 0.5 }}
+          variants={{
+            initialState: {
+              opacity: 0,
+            },
+            animateState: {
+              opacity: 1,
+            },
+            exitState: {
+              opacity: 0,
+            }
+          }}
+        >
+          <Outlet />
+        </motion.div>
       </AnimatePresence>
       <Footer />
-    </>
+    </div>
   );
 };
 

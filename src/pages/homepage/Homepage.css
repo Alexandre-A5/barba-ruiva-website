@@ -6,6 +6,7 @@
     align-items: center;
     text-align: center;
     flex-direction: column;
+    perspective: 1000px; /* Ajouté pour la perspective des éléments 3D */
  
   }
   
@@ -71,13 +72,16 @@
     margin-top:150px;
    
   }
+  .presentation-title{
+    display: flex;
+  }
 
   .presentation-container h3{
     color:var(--second-color);
     font-size: 6em;
     font-weight: 800;
     text-transform: uppercase;
-    margin:0;
+    margin:0 15px;
   }
 
   .presentation-container p{
@@ -167,9 +171,7 @@
 
 }
 
-/* src/components/Homepage.css */
-/* src/components/Homepage.css */
-/* src/components/Homepage.css */
+
 .cube-container {
   position: relative;
   width: 300px;
