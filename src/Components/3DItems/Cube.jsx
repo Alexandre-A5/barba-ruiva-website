@@ -1,10 +1,10 @@
-// src/components/Cube.js
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three-stdlib';
 import { useNavigate } from 'react-router-dom';
 
-const Cube = ({ size = 1, color = 0x00ff00, position = { x: 0, y: 0, z: 0 }, redirectTo = '/' }) => {
+
+const Cube = ({ size = 1, color = 0x00ff00, position = { x: 0, y: 0, z: 0 }, redirectTo = '/contact', className }) => {
   const mountRef = useRef(null);
   const navigate = useNavigate();
 
@@ -13,11 +13,16 @@ const Cube = ({ size = 1, color = 0x00ff00, position = { x: 0, y: 0, z: 0 }, red
 
     // Set up scene, camera, and renderer
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000); // aspect ratio of 1 for square canvas
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); // Enable alpha for transparency
+    const canvasSize = 300; // Define the size of the canvas
+    renderer.setSize(canvasSize, canvasSize); // Set the size of the renderer to 500x500px
     renderer.shadowMap.enabled = true; // Enable shadow maps
+    renderer.setClearColor(0x000000, 0); // Set background color to black with 0 opacity
     mountRef.current.appendChild(renderer.domElement);
+
+    // Ensure the parent element has no background color
+    mountRef.current.style.background = 'none';
 
     // Create a cube with shadow material
     const geometry = new THREE.BoxGeometry(size, size, size);
@@ -28,16 +33,16 @@ const Cube = ({ size = 1, color = 0x00ff00, position = { x: 0, y: 0, z: 0 }, red
     scene.add(cube);
 
     // Add an ambient light
-    const ambientLight = new THREE.AmbientLight(0x404040,3); // Soft white light
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Soft white light
     scene.add(ambientLight);
 
     // Add a point light to create shadows
-    const spotLight = new THREE.SpotLight(0xffffff, 10); // Color, intensity
-    spotLight.position.set(4, 4, 4);
+    const spotLight = new THREE.SpotLight(0xfffffff, 5); // Color, intensity
+    spotLight.position.set(3, 3, 3);
     spotLight.angle = Math.PI / 6; // Cone angle
     spotLight.penumbra = 0.2; // Softness of the edge
     spotLight.decay = 2; // Light decay
-    spotLight.distance = 200; // Distance the light can travel
+    spotLight.distance = 100; // Distance the light can travel
     spotLight.castShadow = true; // Spotlight will cast shadows
 
     // Adjust shadow properties
@@ -49,7 +54,8 @@ const Cube = ({ size = 1, color = 0x00ff00, position = { x: 0, y: 0, z: 0 }, red
 
     scene.add(spotLight);
 
-    camera.position.z = 5;
+    // Position the camera to fit the object
+    camera.position.set(position.x, position.y, 5 + position.z);
 
     // Add OrbitControls
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -80,21 +86,12 @@ const Cube = ({ size = 1, color = 0x00ff00, position = { x: 0, y: 0, z: 0 }, red
 
     animate();
 
-    // Handle window resize
-    const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    };
-
-    window.addEventListener('resize', handleResize);
-
     // Handle cube click event
     const onMouseClick = (event) => {
       // Calculate mouse position in normalized device coordinates (-1 to +1) for both components
       const mouse = new THREE.Vector2();
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      mouse.x = (event.clientX / canvasSize) * 2 - 1; // canvasSize is the width of the canvas
+      mouse.y = -(event.clientY / canvasSize) * 2 + 1; // canvasSize is the height of the canvas
 
       // Create a raycaster
       const raycaster = new THREE.Raycaster();
@@ -114,12 +111,11 @@ const Cube = ({ size = 1, color = 0x00ff00, position = { x: 0, y: 0, z: 0 }, red
       if (mountRef.current) {
         mountRef.current.removeChild(renderer.domElement);
       }
-      window.removeEventListener('resize', handleResize);
       window.removeEventListener('click', onMouseClick);
     };
   }, [size, color, position, redirectTo, navigate]);
 
-  return <div ref={mountRef}/>
+  return <div ref={mountRef} className={`cube-container ${className}`} />;
 };
 
 export default Cube;

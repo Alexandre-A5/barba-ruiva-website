@@ -1,0 +1,51 @@
+
+
+  .banner{
+    background-color: var(--second-color);
+    font-size: 1.5em;
+    font-weight: bold;
+    color:black;
+    padding: 5px 15px;
+    letter-spacing: 0.3em;
+  }
+  
+  .intro {
+    margin-top: 150px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+  
+  }
+  
+
+  .scroll-indicator{
+    position: relative;
+    left:200px;
+    top:50px;
+    animation: float 3s ease-in-out infinite;
+  }
+  .scroll-indicator2{
+    position: relative;
+    left:200px;
+    top:80px;
+    animation: float 3s ease-in-out infinite;
+  }
+  .scroll-indicator-left{
+    position: relative;
+    display: block;
+    width:30px;
+    height: 2px;
+    background-color: var(--second-color);
+    transform: rotate(40deg);
+  }
+  .scroll-indicator-right{
+    position: relative;
+    display: block;
+    width:30px;
+    height: 2px;
+    background-color: var(--second-color);
+    transform: rotate(-40deg);
+    left:22px;
+    top:-2px;
+  }

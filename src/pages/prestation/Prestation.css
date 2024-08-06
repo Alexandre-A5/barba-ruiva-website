@@ -1,1 +1,23 @@
- 
+.prestation-title {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.prestation-container h1{
+    color:var(--second-color);
+    font-size: 7vw;
+    width: 70%;
+    text-align: center;
+    margin:0;
+    margin-top:100px;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.prestation-container h3{
+    color:var(--second-color);
+    font-size: 3vw;
+    margin:0;
+}

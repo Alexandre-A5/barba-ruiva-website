@@ -1,6 +1,45 @@
-.contact-container h1{
+.contact-page-container h1{
     color:var(--second-color);
+    font-size: 5.5vw;
+    width: 50%;
+    margin-top:200px;
+    text-transform: uppercase;
 }
-.contact-container {
-    margin-top:100px;
+.contact-page-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+}
+
+.contact-progress{
+    display: flex;
+    gap:100px;
+    align-items: center;
+    width: 30%;
+}
+.contact-deroulement{
+    display: flex;
+}
+
+.contact-progress rect:hover {
+    transition: transform 0.3s ease;
+}
+.circle1{
+    display: flex;
+    width: 50%;
+}
+.circle1 span{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--complementary-color);
+}
+.circle1 p{
+    color:var(--second-color);
+    font-size:3vw;
+
 }

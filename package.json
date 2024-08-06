@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@monogrid/gainmap-js": "^3.0.5",
     "@react-three/drei": "^9.109.2",
-    "@react-three/fiber": "^8.2.2",
+    "@react-three/fiber": "^8.16.8",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "aos": "^2.3.4",
+    "framer-motion": "^11.3.21",
     "framer-motion-3d": "^11.2.0",
     "gsap": "^3.12.5",
     "gsap-trial": "^3.12.5",
@@ -16,7 +18,8 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.25.1",
     "react-scripts": "5.0.1",
-    "three": "^0.137.0",
+    "react-scroll": "^1.9.0",
+    "three": "^0.167.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
