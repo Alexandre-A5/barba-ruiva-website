@@ -127,6 +127,7 @@ const Homepage = () => {
               <motion.h3
               initial={{ opacity: 0, rotateX:90, y:20}}
               whileInView={{ opacity: 1, rotateX:0, y:0 }}
+              viewport={{ once: true }}
               transition={{
                 duration: 0.35,
                 delay: i / 10
