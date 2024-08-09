@@ -12,7 +12,7 @@
   
   .homepage-container h1{
     color: var(--second-color);
-    font-size: 7em;
+    font-size: 12vw;
     margin:0;
     line-height: 1;
 
@@ -27,8 +27,9 @@
     align-items: center;
   }
   .profil-container img{
-    width: 350px;
-    height: 500px;
+    border-radius: 5px;
+    width: 50%;
+    height: 60vh;
     object-fit: cover;
     object-position:30% 10%;
     box-shadow: 0px 0px 0px 10px rgba(255,255,255,1);
@@ -51,13 +52,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 70%;
+    width: 80%;
     margin:0;
     margin-top:-450px;
   }
 
   .profil-subtitle h2{
-    font-size: 3em;
+    font-size: 5vw;
     color : var(--second-color);
     text-transform: uppercase;
     font-weight: 800;
@@ -78,7 +79,7 @@
 
   .presentation-container h3{
     color:var(--second-color);
-    font-size: 6em;
+    font-size: 8vw;
     font-weight: 800;
     text-transform: uppercase;
     margin:0 15px;
@@ -105,15 +106,56 @@
 
   .presentation-container p{
     color:var(--second-color);
-    font-size: 2em;
-    font-weight: 800;
-    width: 60%;
+    font-size: 3vw;
+    font-weight: 600;
+    width: 90%;
     margin:20px 0;
+
   }
+  .presentation-sub{
+    position: relative;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    background-color: rgb(20, 20, 20);
+  }
+  .presentation-sub svg {
+    position: absolute;
+    left:0;
+  }
+
+  .inner-card{
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+.presentation-sub .line {
+  stroke-dasharray: 250;
+  stroke-width: 0.2vw;
+  fill: transparent;
+  stroke: var(--second-color);
+  animation: svgAnimation 2.5s linear infinite;
+}
+
+
+@keyframes svgAnimation {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 1000;
+  }
+}
+
+
 
   .presta-container{
     margin-top:100px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 200px 0;
@@ -124,58 +166,40 @@
 
   .presta-container p{
     color :var(--second-color);
-    font-size: 2em;
+    font-size: 4vw;
     font-weight: 800;
-    width: 55%;
+    width: 70%;
+  }
+
+  .presta-container button {
+    background-color: var(--second-color);
+    color:var(--complementary-color);
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 1vw 3vw;
+    border: none;
+    border-radius: 10px;
+    transition: 0.5s;
+  }
+
+  .presta-container button:hover{
+    cursor: pointer;
+    background-color: var(--complementary-color);
+    color:var(--second-color);
+    transform: rotateZ(-2deg) scale(1.2);
+    -webkit-box-shadow: 0px 0px 16px 7px rgba(0,0,0,1); 
+    box-shadow: 0px 0px 16px 7px rgba(0,0,0,1);
   }
 
   .presta-container img{
-    position: relative;
-    width: 70%;
-    top:0;
-    left:30%;
-    transition: ease-in-out 1s;
-    z-index: 1;
-    }
+    width: 50%;
+    border-radius: 10px;
+  }
 
-.presta-container:hover img{
 
-  transform: rotateY(15deg) rotateZ(-4deg);  left:10%;
-}
 
-.presta-container:hover .right-container{
-  left:0;
-  transform: rotateY(-20deg) rotateZ(3deg);
-}
 
-.presta-container:hover .right-container button{
-  transform: rotateY(-10deg) rotateZ(-3deg);
-}
-.right-container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  top:0;
-  left:-17%;
-  transition: ease-in-out 1s;
-}
-
-.right-container button{
-  position: relative;
-  background-color: var(--second-color);
-  color:var(--complementary-color);
-  border:none;
-  border-radius: 20px;
-  padding:5px 20px;
-  font-size: 1.25em;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: 1s;
-  
-}
 
 .contact-container span{
   background-color: var(--second-color);

@@ -1,13 +1,13 @@
 nav{
     box-shadow: 0px 13px 34px 0px rgba(0, 0, 0, 0.7);
-    height: 10vh;
+    height: 6vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: fixed;
     background: rgba(13, 13, 13, 0.621);
     backdrop-filter: blur(14.1px);
-    padding: 10px 0;
+    padding: 0px 0;
     width: 100%;
     z-index: 99;
 }
@@ -33,12 +33,12 @@ li:hover{
     cursor: pointer;
 }
 
-a:hover::before {
+nav a:hover::before {
     transform-origin: left;
     transform: scaleX(1);
   }
 
-  a::before {
+ nav a::before {
     content: '';
     position: absolute;
     width: 100%;
