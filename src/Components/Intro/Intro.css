@@ -22,34 +22,24 @@
   
   }
   
+.fa-chevron-down1{
+  color:var(--second-color);
+  font-size: 10vw;
+  margin-top:-30px;
+  
+}
+.fa-chevron-down2{
+  color:var(--second-color);
+  font-size: 10vw;
+  margin-top:-50px;
+}
 
-  .scroll-indicator{
-    position: relative;
-    top:120px;
-    right: 50px;
-    animation: float 3s ease-in-out infinite;
-  }
-  .scroll-indicator2{
-    top:60px;
-    right: 50px;
-    position: relative;
-    animation: float 3s ease-in-out infinite;
-  }
-  .scroll-indicator-left{
-    position: relative;
-    display: block;
-    width:100px;
-    height: 5px;
-    background-color: var(--second-color);
-    transform: rotate(40deg);
-  }
-  .scroll-indicator-right{
-    position: relative;
-    display: block;
-    width:100px;
-    height: 5px;
-    background-color: var(--second-color);
-    transform: rotate(-40deg);
-    left:75px;
-    top:-5px;
+
+  @media only screen and (max-width: 600px) {
+    .intro {
+      margin-top: 100px;
+    }
+
+
+
   }

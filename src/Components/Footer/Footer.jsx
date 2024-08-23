@@ -8,7 +8,7 @@ const Footer = () => {
             <div className="footer-left">
                 <ul>
                     <li>Mentions Légales</li>
-                    <li>Copyrigth</li>
+                    <li>Copyright</li>
                     <li>Designé et codé par Alexandre Augé</li>
                 </ul>
             </div>

@@ -21,3 +21,64 @@
     font-size: 3vw;
     margin:0;
 }
+
+.presta-step{
+    margin-top:100px;
+    display: flex;
+    flex-direction: column;
+    gap:50px
+}
+
+.presta-step h3{
+    color:var(--complementary-color);
+    font-size: 3vw;
+}
+
+.presta-step p{
+    color:var(--second-color);
+    font-size: 3vw;
+    width: 100%;
+    margin:0;
+}
+
+.presta-step-one{
+    width: 60%;
+    align-self: flex-start;
+    padding: 0 50px;
+    text-align: left;
+}
+
+.presta-step-two{
+    align-self:flex-end;
+    width: 60%;
+    padding: 0 50px;
+    text-align: right;
+}
+.presta-step-three{
+    width: 60%;
+    align-self: flex-start;
+    padding: 0 50px;
+    text-align: left;
+}
+
+.presta-step-four{
+    align-self:flex-end;
+    width: 60%;
+    padding: 0 50px;
+    text-align: right;
+}
+
+.presta-contact-lowerpage{
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (max-width:600px){
+    .presta-step-one, .presta-step-two,
+    .presta-step-three, .presta-step-four{
+        align-self:center;
+        text-align: center;
+    }
+}

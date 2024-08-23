@@ -8,7 +8,7 @@ import HomePicture from '../../assets/PhotoStan.jpeg';
 import PrestaPicture from '../../assets/PhotoStan2.jpeg';
 import Intro from '../../Components/Intro/Intro';
 import { motion, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
-import { Parallax, ParallaxLayer } from '@react-spring/parallax';
+
 
 const throttle = (func, limit) => {
   let inThrottle;
@@ -225,7 +225,7 @@ const Homepage = () => {
 
       <Cube 
         size={3} 
-        color={0xffffff} 
+        color={0xffffff}  
         position={{ x: 0, y: 0, z: 0 }} 
         className='homepage-cube' 
       />
