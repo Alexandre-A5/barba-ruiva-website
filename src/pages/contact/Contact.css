@@ -3,43 +3,95 @@
     font-size: 5.5vw;
     width: 50%;
     margin-top:200px;
+    text-align: center;
     text-transform: uppercase;
 }
-.contact-page-container{
+
+.contact-page-container {
+    display: block;
+    padding: 20px;
+    color: var(--second-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.line-container{
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    flex-direction: column;
-
+    gap: 5vw;
+    position: relative;
 }
 
-.contact-progress{
-    display: flex;
-    gap:100px;
-    align-items: center;
-    width: 30%;
-}
-.contact-deroulement{
-    display: flex;
-}
-
-.contact-progress rect:hover {
-    transition: transform 0.3s ease;
-}
-.circle1{
-    display: flex;
-    width: 50%;
-}
-.circle1 span{
+.line{
     display: inline-block;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--complementary-color);
-}
-.circle1 p{
-    color:var(--second-color);
-    font-size:3vw;
 
+}
+.line-left{
+    width: 0.5vw;
+    height: 110vh;
+    background-color:var(--second-color) ;
+    border-radius: 10px;
+}
+
+.line-middle{
+    width: 1vw;
+    height: 130vh;
+    border-radius: 10px;
+    background-color:var(--complementary-color);
+}
+.line-right{
+    width: 0.5vw;
+    height: 110vh;
+    border-radius: 10px;
+    background-color:var(--second-color) ;
+}
+
+.first-step{
+    display: block;
+    position: absolute;
+    left: 200px;
+    bottom: 0px;
+    font-size: 3vw;
+    width: 30%;
+    text-align: right;
+}
+
+.first-step::after{
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-color: var(--complementary-color);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+
+.second-step{
+    position: absolute;
+    right: 200px;
+    bottom: -300px;
+    font-size: 3vw;
+    width: 30%;
+    text-align: left;
+
+}
+.third-step{
+    position: absolute;
+    position: absolute;
+    left: 370px;
+    bottom: -500px;
+    font-size: 3vw;
+    width: 20%;
+    text-align: right;
+}
+.fourth-step{
+    position: absolute;
+    right: 200px;
+    bottom: -800px;
+    font-size: 3vw;
+    width: 30%;
+    text-align: left;
 }

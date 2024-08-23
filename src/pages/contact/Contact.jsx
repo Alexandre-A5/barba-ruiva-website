@@ -17,12 +17,24 @@ const Contact = () => {
     return (
         <div className="contact-page-container">
             <h1 data-aos='fade-in'>Déroulement de la prise de contact</h1>
-                <div className="circle1">
-                    <p>On prends contacte par téléphone ou par mail</p>
-                    <span></span>
-                </div>
-
-           
+            <div className="line-container">
+                <span className="line line-left"></span>
+                <span className="line line-middle"></span>
+                <span className="line line-right"></span>
+            </div>
+            <div className="first-step">
+                <p>On prends contacte
+                (appel / mail )</p>
+            </div>
+            <div className="second-step">
+                <p>On parle de ton projet et de tes envies</p>
+            </div>
+            <div className="third-step">
+                <p>On prends rendez vous</p>
+            </div>
+            <div className="fourth-step">
+                <p>Et tu prends confiance</p>
+            </div>
         </div>
     );
 };
