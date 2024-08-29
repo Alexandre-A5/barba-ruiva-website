@@ -46,15 +46,15 @@ function MicrophoneModel({ url, rotation, color }) {
   return <primitive ref={ref} object={model} scale={0.15} />;
 }
 
-function Microphone() {
+function Microphone({className}) {
   // Valeurs de rotation en radians (x, y, z)
   const rotation = [0, Math.PI / 3, 0.5]; // Rotation de 45 degrés autour de l'axe Y
 
   // Couleur souhaitée (par exemple, rouge)
-  const color = 'white'; // Tu peux utiliser un code hexadécimal comme '#FF0000' ou des noms de couleurs comme 'red'
+  const color = 'orange'; // Tu peux utiliser un code hexadécimal comme '#FF0000' ou des noms de couleurs comme 'red'
 
   return (
-    <div className='microphone-box'>
+    <div className={className}>
       <Canvas shadows>
         <PerspectiveCamera makeDefault fov={1} position={[0, 0, 20]} />
         <ambientLight intensity={0} />

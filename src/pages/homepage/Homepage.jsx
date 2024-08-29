@@ -10,6 +10,10 @@ import { motion, useMotionValue, useSpring, useMotionTemplate } from 'framer-mot
 import Phone from '../../Components/Phone';
 import Microphone from '../../Components/Microphone';
 import Note from '../../Components/Note';
+import Headphones from '../../Components/Headphones';
+import PlayButton from '../../Components/Playbutton';
+import Woofer from '../../Components/Woofer';
+import Radio from '../../Components/Radio';
 
 const throttle = (func, limit) => {
   let inThrottle;
@@ -29,8 +33,6 @@ const Homepage = () => {
   const aProposText = "A propos de moi".split(" ");
 
   const ref = useRef(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
 
 
 
@@ -68,32 +70,21 @@ const Homepage = () => {
   return (
     <div className="homepage-container">
       <Intro/>
-
-      <Microphone/>
-      <Note/>
-
-    
-
       <div className='profil-container'>
         <motion.div 
           className='profil-container-img'
           initial={{x:-50, opacity:0}}
           whileInView={{x:0, opacity:1}}
-          transition={{duration:1.5, ease:"easeOut"}}
+          transition={{duration:2.5, ease:"easeOut"}}
           ref={ref}
         >
           <img 
-            data-aos="fade-right"
             src={HomePicture}
             alt="Barba Ruiva en concert"
           />
         </motion.div>
-
-       
-
-        
-
-        <div className='profil-subtitle'>
+    
+      <div className='profil-subtitle'>
           {h2text.map((el, i) => (
             <motion.h2
               initial={{ opacity: 0, rotateX: 90, y: 20 }}
@@ -107,8 +98,20 @@ const Homepage = () => {
               {el}{" "}
             </motion.h2>
           ))}
+                <motion.div className='profil-3dmodel'
+                initial={{opacity:0}}
+                whileInView={{opacity:1}}
+                transition={{duration:2.5, ease:"easeOut"}}
+                ref={ref}>
+                  <Microphone className="microphone-box"/>
+                  <Note className="note-box"/>
+                  <Headphones className="headphones-box"/>
+                  <PlayButton className="playbutton-box"/>
+                </motion.div>
         </div>
       </div>
+
+
 
       <div className='presentation-container'>
         <div className='presentation-title'>  
@@ -143,6 +146,10 @@ const Homepage = () => {
             <p>Guitariste et Bassiste. J’ai commencé il y a 10 ans et aujourd’hui je prépare une licence en musicologie ainsi qu’un Diplôme d'Etude Musicale du conservatoire dans le département JAZZ.</p>
           </div>
         </div>
+      </div>
+      <div className="presentation-model3d">
+        <Woofer className="woofer-box"/>
+        <Radio className="radio-box"/>
       </div>
 
      

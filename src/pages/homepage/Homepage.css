@@ -24,10 +24,11 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    margin-top:200px;
+    touch-action: none;
+    gap: 50px;
   }
   .profil-container img{
-    position: relative;
-    bottom:300px;
     border-radius: 5px;
     width: 50%;
     height: 60vh;
@@ -37,29 +38,26 @@
   -webkit-box-shadow: 0px 0px 0px 10px rgba(255,255,255,1);
   -moz-box-shadow: 0px 0px 0px 10px rgba(255,255,255,1);
   }
-
-  @keyframes float {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-7px);
-    }
-    100% {
-      transform: translateY(0);
-    }
+  .profil-3dmodel{
+    position: absolute;
+    top:300px;
   }
+
+  .presentation-model3d{
+    position:absolute;
+  }
+
   .profil-subtitle{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 80%;
+    width: 55%;
     margin:0;
-    margin-top:-250px;
+    margin-top:0px;
   }
 
   .profil-subtitle h2{
-    font-size: 5vw;
+    font-size: 3vw;
     color : var(--second-color);
     text-transform: uppercase;
     font-weight: 800;
@@ -120,7 +118,6 @@
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    background-color: rgb(20, 20, 20);
   }
   .presentation-sub svg {
     position: absolute;
@@ -225,39 +222,6 @@
 }
 
 
-.profil-sphere{
-  top:500px;
-  left:250px;
-  z-index:3
-}
-
-.profil-sphere2{
-  top:-100px;
-  left:-200px;
-  z-index:-2;
-}
-
-.profil-cube{
-  top:200px;
-  left:-400px
-}
-
-.profil-cube2{
-  top:-400px;
-  left:400px;
-  z-index:3;
-}
-.sphere-container{
-  position: relative;
-  width: 200px;
-  height: 200px;
-
-}
-.presentation-sphere{
-  top:-100px;
-  left:-100px;
-  z-index:2;
-}
 .phone-box{
   width: 300px;
   height: 300px;
@@ -273,9 +237,21 @@
   height: 300px;
   z-index: 4;
   touch-action: none;
+  filter: drop-shadow(5px 5px 10px rgb(0, 0, 0));
 
   top:0px;
   left:150px;
+}
+
+.headphones-box{
+  width: 300px;
+  height: 300px;
+  position: relative;
+  z-index: -1;
+  touch-action: none;
+
+  bottom:50px;
+  right:150px;
 }
 
 .microphone-box{
@@ -288,15 +264,42 @@
   top:250px;
   right:300px;
 }
+.playbutton-box{
+  width: 300px;
+  height: 300px;
+  position: relative;
+  z-index: 3;
+  touch-action: none;
+
+  top:-300px;
+  left:300px;
+}
+.woofer-box{
+  width: 500px;
+  height: 500px;
+  position: relative;
+  z-index: -1;
+  touch-action: none;
+
+  top:-50px;
+  right:500px;
+}
+
+.radio-box{
+  width: 300px;
+  height: 300px;
+  position: relative;
+  z-index: -1;
+  touch-action: none;
+
+  top:-50px;
+  left:500px;
+}
 
 @media only screen and (max-width: 600px) {
-  .sphere-container{
+  .profil-3dmodel{
     display: none;
   }
-  .profil-cube2{
-    display: none;
-  }
-
   .profil-subtitle{
     display: flex;
     margin:0;
@@ -311,6 +314,6 @@
   }
 
   .profil-container img{
-    height: 300px;
+    height: 30vh;
   }
 }

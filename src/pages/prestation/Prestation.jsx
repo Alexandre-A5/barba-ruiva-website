@@ -1,6 +1,10 @@
 import React from "react";
 import './Prestation.css';
 import Cube from '../../Components/3DItems/Cube';
+import Phone from '../../Components/Phone';
+
+
+
 const Prestation = () => {
 
     return(
@@ -33,12 +37,7 @@ const Prestation = () => {
                     <span>Contactez moi</span>
                 </div>
 
-                <Cube 
-                    size={3} 
-                    color={0xffffff} 
-                    position={{ x: 0, y: 0, z: 0 }} 
-                    className='homepage-cube' 
-                />
+                <Phone/>
             </div>
         </div>
     )
