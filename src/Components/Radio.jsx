@@ -51,7 +51,7 @@ function Radio({className}) {
   const rotation = [0, 0, 0.3]; // Rotation de 45 degrés autour de l'axe Y
 
   // Couleur souhaitée (par exemple, rouge)
-  const color = 'white'; // Tu peux utiliser un code hexadécimal comme '#FF0000' ou des noms de couleurs comme 'red'
+  const color = '#F9F9F9'; // Tu peux utiliser un code hexadécimal comme '#FF0000' ou des noms de couleurs comme 'red'
 
   return (
     <div className={className}>

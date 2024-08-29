@@ -56,14 +56,8 @@ function Headphones() {
     <div className='headphones-box'>
       <Canvas shadows>
         <PerspectiveCamera makeDefault fov={1} position={[0, 0, 20]} />
-        <ambientLight intensity={10} />
-        <directionalLight
-          castShadow
-          position={[20, 20, 20]}
-          intensity={6}
-          shadow-mapSize-width={1024}
-          shadow-mapSize-height={1024}
-        />
+        <ambientLight intensity={1} />
+        
         <Environment preset="sunset" />
         <Suspense>
           <NoteModel url="/models/headphones/headphones.gltf" rotation={rotation} color={color} />

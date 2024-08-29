@@ -51,7 +51,7 @@ function Woofer({className}) {
   const rotation = [2, 4, 0]; // Rotation de 45 degrés autour de l'axe Y
 
   // Couleur souhaitée (par exemple, rouge)
-  const color = 'orange'; // Tu peux utiliser un code hexadécimal comme '#FF0000' ou des noms de couleurs comme 'red'
+  const color = '#FE5F00'; // Tu peux utiliser un code hexadécimal comme '#FF0000' ou des noms de couleurs comme 'red'
 
   return (
     <div className={className}>

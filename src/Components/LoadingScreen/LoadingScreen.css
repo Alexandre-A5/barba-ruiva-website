@@ -1,0 +1,25 @@
+/* LoadingScreen.css */
+.loading-container{
+  margin-top: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.loading-container p{
+  position: absolute;
+  top:100px;
+  color:var(--second-color);
+  z-index: 99;
+  filter: drop-shadow();
+}
+  
+  .guitar-box{
+    position: fixed;
+    margin-top:0px;
+    width: 100%;
+    height: 100vh;
+    z-index:98;
+    background-color: black;
+  }
+

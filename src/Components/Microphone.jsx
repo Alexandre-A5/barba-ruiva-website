@@ -45,20 +45,14 @@ function MicrophoneModel({ url, rotation, color }) {
 
 function Microphone({ className }) {
   const rotation = [0, Math.PI / 3, 0.5];
-  const color = 'orange';
+  const color = '#FE5F00';
 
   return (
     <div className={className}>
       <Canvas shadows>
         <PerspectiveCamera makeDefault fov={1} position={[0, 0, 20]} />
-        <ambientLight intensity={10} />
-        <directionalLight
-          castShadow
-          position={[20, 20, 20]}
-          intensity={6}
-          shadow-mapSize-width={1024}
-          shadow-mapSize-height={1024}
-        />
+        <ambientLight intensity={1} />
+        
         <Environment preset="sunset" />
         <Suspense fallback={null}>
           <MicrophoneModel url="/models/microphone/microphone2.gltf" rotation={rotation} color={color} />

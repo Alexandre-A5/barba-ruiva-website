@@ -1,81 +1,52 @@
-import React, { useEffect, useRef } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import AOS from 'aos';
-import 'aos/dist/aos.css';
-import './Homepage.css';
 import HomePicture from '../../assets/PhotoStan.jpeg';
 import PrestaPicture from '../../assets/PhotoStan2.jpeg';
 import Intro from '../../Components/Intro/Intro';
-import { motion, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
-import Phone from '../../Components/Phone';
-import Microphone from '../../Components/Microphone';
-import Note from '../../Components/Note';
-import Headphones from '../../Components/Headphones';
-import PlayButton from '../../Components/Playbutton';
-import Woofer from '../../Components/Woofer';
-import Radio from '../../Components/Radio';
+import { motion } from 'framer-motion';
+import LoadingScreen from '../../Components/LoadingScreen/LoadingScreen';
+import 'aos/dist/aos.css';
+import './Homepage.css';
 
-const throttle = (func, limit) => {
-  let inThrottle;
-  return function() {
-    const args = arguments;
-    const context = this;
-    if (!inThrottle) {
-      func.apply(context, args);
-      inThrottle = true;
-      setTimeout(() => inThrottle = false, limit);
-    }
-  }
-};
+const Phone = React.lazy(() => import('../../Components/Phone'));
+const Microphone = React.lazy(() => import('../../Components/Microphone'));
+const Note = React.lazy(() => import('../../Components/Note'));
+const Headphones = React.lazy(() => import('../../Components/Headphones'));
+const PlayButton = React.lazy(() => import('../../Components/Playbutton'));
+const Woofer = React.lazy(() => import('../../Components/Woofer'));
+const Radio = React.lazy(() => import('../../Components/Radio'));
 
 const Homepage = () => {
-  const h2text = "Cours de guitare sur mesure avec exercices techniques et jeu en duo".split(" ");
-  const aProposText = "A propos de moi".split(" ");
-
-  const ref = useRef(null);
-
-
-
-  const prestaImgRef = useRef(null);
-
-  const handlePrestaMouseMove = throttle((e) => {
-    if (!prestaImgRef.current) return;
-
-    const rect = prestaImgRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const midX = rect.width / 5;
-    const midY = rect.height / 5;
-
-    const offsetX = ((x - midX) / midX) * 5;
-    const offsetY = ((y - midY) / midY) * 5;
-
-    prestaImgRef.current.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-  }, 20);
-
-  const handlePrestaMouseLeave = () => {
-    if (prestaImgRef.current) {
-      prestaImgRef.current.style.transform = 'translate(0px, 0px)';
-    }
-  };
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     AOS.init({
       duration: 2000,
       once: true,
     });
+
+    // Simuler un faux chargement de 3 secondes
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 8000);
+
+    // Nettoyage du timer lors du démontage du composant
+    return () => clearTimeout(timer);
   }, []);
+
+  if (loading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="homepage-container">
-      <Intro/>
+      <Intro />
       <div className='profil-container'>
         <motion.div 
           className='profil-container-img'
           initial={{x:-50, opacity:0}}
           whileInView={{x:0, opacity:1}}
           transition={{duration:2.5, ease:"easeOut"}}
-          ref={ref}
         >
           <img 
             src={HomePicture}
@@ -83,8 +54,8 @@ const Homepage = () => {
           />
         </motion.div>
     
-      <div className='profil-subtitle'>
-          {h2text.map((el, i) => (
+        <div className='profil-subtitle'>
+          {"Cours de guitare sur mesure avec exercices techniques et jeu en duo".split(" ").map((el, i) => (
             <motion.h2
               initial={{ opacity: 0, rotateX: 90, y: 20 }}
               whileInView={{ opacity: 1, rotateX: 0, y: 0 }}
@@ -97,24 +68,24 @@ const Homepage = () => {
               {el}{" "}
             </motion.h2>
           ))}
-                <motion.div className='profil-3dmodel'
-                initial={{opacity:0}}
-                whileInView={{opacity:1}}
-                transition={{duration:2.5, ease:"easeOut"}}
-                ref={ref}>
-                  <Microphone className="microphone-box"/>
-                  <Note className="note-box"/>
-                  <Headphones className="headphones-box"/>
-                  <PlayButton className="playbutton-box"/>
-                </motion.div>
+          <Suspense fallback={<div>Loading 3D models...</div>}>
+            <motion.div className='profil-3dmodel'
+              initial={{opacity:0}}
+              whileInView={{opacity:1}}
+              transition={{duration:2.5, ease:"easeOut"}}
+            >
+              <Microphone className="microphone-box"/>
+              <Note className="note-box"/>
+              <Headphones className="headphones-box"/>
+              <PlayButton className="playbutton-box"/>
+            </motion.div>
+          </Suspense>
         </div>
       </div>
 
-
-
       <div className='presentation-container'>
         <div className='presentation-title'>  
-          {aProposText.map((el, i) => (
+          {"A propos de moi".split(" ").map((el, i) => (
             <motion.h3
               initial={{ opacity: 0, rotateX: 90, y: 20 }}
               whileInView={{ opacity: 1, rotateX: 0, y: 0 }}
@@ -146,21 +117,19 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-      <div className="presentation-model3d">
-        <Woofer className="woofer-box"/>
-        <Radio className="radio-box"/>
-      </div>
 
-     
-      
+      <Suspense fallback={<div>Loading 3D models...</div>}>
+        <div className="presentation-model3d">
+          <Woofer className="woofer-box"/>
+          <Radio className="radio-box"/>
+        </div>
+      </Suspense>
+
       <div className='presta-container'>
         <img 
           src={PrestaPicture} 
           alt="Barba Ruiva accoudé à une table" 
           draggable='false' 
-          ref={prestaImgRef}
-          onMouseMove={handlePrestaMouseMove} // Appliquer l'événement ici
-          onMouseLeave={handlePrestaMouseLeave} // Appliquer l'événement ici
           style={{
             transition: 'transform 0.5s ease-out',
             willChange: 'transform',
@@ -169,17 +138,21 @@ const Homepage = () => {
 
         <p>Cours de guitare à Andlau et ses alentours avec un tarif de 15€ / heure</p>
         <a href="/prestation"><button>En savoir plus</button></a>
-      <div className="presta-model3d">
-        <Note className="presta-note-box"/>
-        <Microphone className="presta-microphone-box"/>
-      </div>
+        <Suspense fallback={<div>Loading 3D models...</div>}>
+          <div className="presta-model3d">
+            <Note className="presta-note-box"/>
+            <Microphone className="presta-microphone-box"/>
+          </div>
+        </Suspense>
       </div>
 
       <div className='contact-container'>
         <span>Contactez moi</span>
       </div>
 
-      <Phone/>
+      <Suspense fallback={<div>Loading 3D models...</div>}>
+        <Phone />
+      </Suspense>
     </div>
   );
 };

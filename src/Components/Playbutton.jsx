@@ -51,20 +51,13 @@ function PlayButton({className}) {
   const rotation = [2, 4, 0]; // Rotation de 45 degrés autour de l'axe Y
 
   // Couleur souhaitée (par exemple, rouge)
-  const color = 'orange'; // Tu peux utiliser un code hexadécimal comme '#FF0000' ou des noms de couleurs comme 'red'
+  const color = '#FE5F00'; // Tu peux utiliser un code hexadécimal comme '#FF0000' ou des noms de couleurs comme 'red'
 
   return (
     <div className={className}>
       <Canvas shadows>
         <PerspectiveCamera makeDefault fov={1} position={[0, 0, 20]} />
-        <ambientLight intensity={0} />
-        <directionalLight
-          castShadow
-          position={[10, 10, 5]}
-          intensity={2}
-          shadow-mapSize-width={1024}
-          shadow-mapSize-height={1024}
-        />
+       
         <Environment preset="sunset" />
         <Suspense>
           <PlaybuttonModel url="/models/playbutton/playButton.gltf" rotation={rotation} color={color} />

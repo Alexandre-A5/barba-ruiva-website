@@ -14,7 +14,7 @@ nav{
     backdrop-filter: blur(14.1px);
     padding: 0px 0;
     width: 100%;
-    z-index: 99;
+    z-index: 90;
 }
 
 nav ul{
