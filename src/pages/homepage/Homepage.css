@@ -320,13 +320,12 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .profil-3dmodel{
+  .profil-3dmodel,.presentation-model3d,.presta-model3d{
     display: none;
   }
   .profil-subtitle{
     display: flex;
     margin:0;
-    margin-top: 40px;
   }
   .presentation-container{
     margin-top:100px;
@@ -339,4 +338,15 @@
   .profil-container img{
     height: 30vh;
   }
+
+  .presta-container{
+    padding: 0;
+    margin:50px 0;
+  }
+  .phone-box{
+    width: 100px;
+    height: 100px;
+    margin-top:20px;
+  }
+
 }
