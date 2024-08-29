@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import Cube from '../../Components/3DItems/Cube';
-import Sphere from '../../Components/3DItems/Sphere';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './Homepage.css';
@@ -8,7 +7,9 @@ import HomePicture from '../../assets/PhotoStan.jpeg';
 import PrestaPicture from '../../assets/PhotoStan2.jpeg';
 import Intro from '../../Components/Intro/Intro';
 import { motion, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
-
+import Phone from '../../Components/Phone';
+import Microphone from '../../Components/Microphone';
+import Note from '../../Components/Note';
 
 const throttle = (func, limit) => {
   let inThrottle;
@@ -26,39 +27,12 @@ const throttle = (func, limit) => {
 const Homepage = () => {
   const h2text = "Cours de guitare sur mesure avec exercices techniques et jeu en duo".split(" ");
   const aProposText = "A propos de moi".split(" ");
-  const ROTATION_RANGE = 32.5;
-  const HALF_ROTATION_RANGE = 32.5 / 2;
 
   const ref = useRef(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const xSpring = useSpring(x);
-  const ySpring = useSpring(y);
 
-  const transform = useMotionTemplate`rotateX(${xSpring}deg) rotateY(${ySpring}deg)`;
-
-  const handleMouseMove = (e) => {
-    if (!ref.current) return [0, 0];
-
-    const rect = ref.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-
-    const mouseX = (e.clientX - rect.left) * ROTATION_RANGE;
-    const mouseY = (e.clientY - rect.top) * ROTATION_RANGE;
-
-    const rX = (mouseY / height - HALF_ROTATION_RANGE) * -1;
-    const rY = mouseX / width - HALF_ROTATION_RANGE;
-
-    x.set(rX);
-    y.set(rY);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
 
   const prestaImgRef = useRef(null);
 
@@ -95,33 +69,18 @@ const Homepage = () => {
     <div className="homepage-container">
       <Intro/>
 
-      <Sphere 
-        size={3} 
-        color={0xffffff} 
-        position={{ x: 0, y: 0, z: 0 }} 
-        className='profil-sphere'
-      />
+      <Microphone/>
+      <Note/>
 
-      <Cube
-        size={1.5} color={0xFE5F00} 
-        position={{ x: 0, y: 0, z: 0 }} 
-        className='profil-cube'
-      />
+    
 
       <div className='profil-container'>
         <motion.div 
           className='profil-container-img'
-          initial={{x:-90, opacity:0}}
+          initial={{x:-50, opacity:0}}
           whileInView={{x:0, opacity:1}}
-          transition={{duration:2.5, ease:"easeOut"}}
+          transition={{duration:1.5, ease:"easeOut"}}
           ref={ref}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          style={{
-            transformStyle: "preserve-3d",
-            transform,
-            x:0,
-          }}
         >
           <img 
             data-aos="fade-right"
@@ -130,17 +89,9 @@ const Homepage = () => {
           />
         </motion.div>
 
-        <Sphere 
-          size={3} color={0xffffff} 
-          position={{ x: 0, y: 0, z: 0 }} 
-          className='profil-sphere2'
-        />
+       
 
-        <Cube
-          size={1.5} color={0xFE5F00} 
-          position={{ x: 0, y: 0, z: 0 }} 
-          className='profil-cube2'
-        />
+        
 
         <div className='profil-subtitle'>
           {h2text.map((el, i) => (
@@ -194,17 +145,12 @@ const Homepage = () => {
         </div>
       </div>
 
-      <Sphere 
-        size={1} 
-        color={0xffffff} 
-        position={{ x: 0, y: 0, z: 0 }} 
-        className='presentation-sphere'
-      />
+     
       
       <div className='presta-container'>
         <img 
           src={PrestaPicture} 
-          alt="Barba Ruiva" 
+          alt="Barba Ruiva accoudé à une table" 
           draggable='false' 
           ref={prestaImgRef}
           onMouseMove={handlePrestaMouseMove} // Appliquer l'événement ici
@@ -223,12 +169,7 @@ const Homepage = () => {
         <span>Contactez moi</span>
       </div>
 
-      <Cube 
-        size={3} 
-        color={0xffffff}  
-        position={{ x: 0, y: 0, z: 0 }} 
-        className='homepage-cube' 
-      />
+      <Phone/>
     </div>
   );
 };

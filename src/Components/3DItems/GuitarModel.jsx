@@ -1,34 +1,30 @@
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
-import { OrbitControls } from 'three-stdlib';
-import { GLTFLoader } from 'three-stdlib';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { useNavigate } from 'react-router-dom';
 
-const ModelViewer = ({ modelPath = '../models/Guittar.glb', scale = 1, position = { x: 0, y: 0, z: 0 }, redirectTo = '/contact', className }) => {
+const GuitarModel = ({ modelPath, className }) => {
   const mountRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!mountRef.current) return;
 
-    // Set up scene, camera, and renderer
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, mountRef.current.clientWidth / mountRef.current.clientHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    const canvasSize = 300;
-    renderer.setSize(canvasSize, canvasSize);
+    renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
     renderer.shadowMap.enabled = true;
     renderer.setClearColor(0x000000, 0);
     mountRef.current.appendChild(renderer.domElement);
 
     mountRef.current.style.background = 'none';
 
-    // Add ambient light
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
 
-    // Add point light
-    const spotLight = new THREE.SpotLight(0xfffffff, 5);
+    const spotLight = new THREE.SpotLight(0xffffff, 5);
     spotLight.position.set(3, 3, 3);
     spotLight.angle = Math.PI / 6;
     spotLight.penumbra = 0.2;
@@ -42,10 +38,21 @@ const ModelViewer = ({ modelPath = '../models/Guittar.glb', scale = 1, position 
     spotLight.shadow.camera.fov = 30;
     scene.add(spotLight);
 
-    // Position the camera
-    camera.position.set(position.x, position.y, 5 + position.z);
+    const loader = new GLTFLoader();
+    loader.load(modelPath, (gltf) => {
+      const model = gltf.scene;
+      model.traverse((child) => {
+        if (child.isMesh) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+        }
+      });
+      scene.add(model);
+      camera.position.set(0, 1.5, 5);
+    }, undefined, (error) => {
+      console.error('Error loading model:', error);
+    });
 
-    // Add OrbitControls
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.25;
@@ -53,73 +60,52 @@ const ModelViewer = ({ modelPath = '../models/Guittar.glb', scale = 1, position 
     controls.maxPolarAngle = Math.PI / 2;
     controls.enableZoom = false;
 
-    // Load the 3D model
-    const loader = new GLTFLoader();
-    let model;
-    
-    loader.load(
-      modelPath,
-      (gltf) => {
-        model = gltf.scene;
-        model.scale.set(scale, scale, scale);
-        model.position.set(position.x, position.y, position.z);
-        model.castShadow = true;
-        scene.add(model);
-      },
-      undefined,
-      (error) => {
-        console.error('An error happened while loading the model:', error);
-      }
-    );
-
-    // Animation function
-    const clock = new THREE.Clock();
-
+    let clock = new THREE.Clock();
     const animate = () => {
       requestAnimationFrame(animate);
-
-      if (model) {
-        model.rotation.y += 0.01;
-        
-        let time = clock.getElapsedTime();
-        model.position.y = position.y + Math.sin(time * 2) * 0.1;
-      }
-
       controls.update();
       renderer.render(scene, camera);
     };
 
     animate();
 
-    // Handle model click event
     const onMouseClick = (event) => {
       const mouse = new THREE.Vector2();
-      mouse.x = (event.clientX / canvasSize) * 2 - 1;
-      mouse.y = -(event.clientY / canvasSize) * 2 + 1;
+      mouse.x = (event.clientX / mountRef.current.clientWidth) * 2 - 1;
+      mouse.y = -(event.clientY / mountRef.current.clientHeight) * 2 + 1;
 
       const raycaster = new THREE.Raycaster();
       raycaster.setFromCamera(mouse, camera);
 
-      if (model) {
-        const intersects = raycaster.intersectObject(model, true);
-        if (intersects.length > 0) {
-          navigate(redirectTo);
-        }
+      const intersects = raycaster.intersectObjects(scene.children.filter(child => child.isMesh));
+      if (intersects.length > 0) {
+        navigate('/contact');
       }
     };
 
     window.addEventListener('click', onMouseClick);
 
-    // Clean up on unmount
+    const handleResize = () => {
+      if (mountRef.current) {
+        renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+        camera.aspect = mountRef.current.clientWidth / mountRef.current.clientHeight;
+        camera.updateProjectionMatrix();
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
     return () => {
       if (mountRef.current) {
         mountRef.current.removeChild(renderer.domElement);
       }
       window.removeEventListener('click', onMouseClick);
+      window.removeEventListener('resize', handleResize);
     };
-  }, [modelPath, scale, position, redirectTo, navigate]);
+  }, [modelPath, navigate]);
 
-  return <div ref={mountRef} className={`model-viewer ${className}`} />;
+  return <div ref={mountRef} className={`model-viewer ${className}`} style={{ width: '100%', height: '100%' }} />;
 };
 
-export default ModelViewer;
+export default GuitarModel;

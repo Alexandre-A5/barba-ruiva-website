@@ -13,7 +13,9 @@ const Contact = () => {
             duration: 2000, // Durée de l'animation en millisecondes
             once: true,     // Animation ne se joue qu'une seule fois
         });
+        window.scrollTo(10, 0);
     }, []);
+    
 
     return (
         <>
@@ -25,7 +27,7 @@ const Contact = () => {
                 <span className="line line-right"></span>
             </div>
             <div className="first-step">
-                <p>On prends contact
+                <p>On prend contact
                 (appel / mail )</p>
                 <span className="first-orange-circle"></span>
             </div>
@@ -34,7 +36,7 @@ const Contact = () => {
                 <p>On parle de ton projet et de tes envies</p>
             </div>
             <div className="third-step">
-                <p>On prends rendez vous</p>
+                <p>On prend rendez vous</p>
                 <span className="third-orange-circle"></span>
             </div>
             <div className="fourth-step">
@@ -48,6 +50,10 @@ const Contact = () => {
                     <h1>Prendre Rendez-vous</h1>
                     <CalendlyWidget />
                 </div>
+
+
+
+
                 {/*    <h3>Ou contactez moi ici</h3>
                  <div className="info-card-container">
                     <div className="phoneNumber">
