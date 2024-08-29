@@ -166,7 +166,7 @@
     color :var(--second-color);
     font-size: 4vw;
     font-weight: 800;
-    width: 70%;
+    width: 65%;
   }
 
   .presta-container button {
@@ -197,7 +197,30 @@
   }
 
 
+  .presta-model3d{
+    position: absolute;
+  }
 
+  .presta-note-box{
+    width: 300px;
+    height: 300px;
+    position: relative;
+    z-index: 3;
+    touch-action: none;
+  
+    bottom:200px;
+    left:300px;
+  }
+  .presta-microphone-box{
+    width: 400px;
+    height: 400px;
+    position: relative;
+    z-index: 1;
+    touch-action: none;
+  
+    bottom:150px;
+    right:300px;
+  }
 
 
 .contact-container span{

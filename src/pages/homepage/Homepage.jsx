@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import Cube from '../../Components/3DItems/Cube';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './Homepage.css';
@@ -170,6 +169,10 @@ const Homepage = () => {
 
         <p>Cours de guitare à Andlau et ses alentours avec un tarif de 15€ / heure</p>
         <a href="/prestation"><button>En savoir plus</button></a>
+      <div className="presta-model3d">
+        <Note className="presta-note-box"/>
+        <Microphone className="presta-microphone-box"/>
+      </div>
       </div>
 
       <div className='contact-container'>
