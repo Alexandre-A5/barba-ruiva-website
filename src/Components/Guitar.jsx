@@ -11,14 +11,14 @@ function GuitarModel({ url, rotation }) {
   const ref = useRef();
 
   // Définir les couleurs à animer
-  const color1 = new THREE.Color('white');
-  const color2 = new THREE.Color('#FFA500'); // Orange
+  const color1 = new THREE.Color('#F9F9F9');
+  const color2 = new THREE.Color('#FE5F00'); // Orange
 
   // Animation de couleur
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
-    const lerpFactor = (Math.sin(t) + 1) / 2; // Oscille entre 0 et 1
-    const color = color1.clone().lerp(color2, lerpFactor); // Interpolation entre les deux couleurs
+    const beat = Math.sin(t * 2) * 0.5 + 0.5; // Oscillation rapide pour simuler un battement de cœur
+    const color = color1.clone().lerp(color2, beat); // Interpolation entre les deux couleurs
 
     // Appliquer la couleur animée aux matériaux du modèle
     if (ref.current) {
@@ -31,9 +31,7 @@ function GuitarModel({ url, rotation }) {
 
     // Animation de flottement et rotation légère
     if (ref.current) {
-      ref.current.position.y = Math.sin(t) * 0.001; // Amplitude de 0.1
-
-      // Rotation légère
+      ref.current.position.y = Math.sin(t) * 0.001; // Amplitude de 0.1 pour le flottement
       ref.current.rotation.y += 0.010; // Vitesse de rotation
     }
   });

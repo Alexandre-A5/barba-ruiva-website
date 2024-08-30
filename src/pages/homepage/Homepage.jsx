@@ -24,7 +24,7 @@ const Homepage = () => {
       duration: 2000,
       once: true,
     });
-
+    window.scrollTo(0, 0);
     // Simuler un faux chargement de 3 secondes
     const timer = setTimeout(() => {
       setLoading(false);

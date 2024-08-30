@@ -4,6 +4,10 @@ import './Contact.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import CalendlyWidget from '../../Components/CalendlyWidget'; // Assurez-vous que le chemin est correct
+import Headphones from "../../Components/Headphones";
+import Woofer from "../../Components/Woofer";
+import Microphone from "../../Components/Microphone";
+import Note from "../../Components/Note";
 
 const Contact = () => {
     
@@ -20,6 +24,12 @@ const Contact = () => {
     return (
         <>
         <div className="contact-page-container">
+            <div className="model3d-page-container">
+                <Headphones className="headphones-page-contact"/>
+                <Woofer className="woofer-page-contact"/>
+                <Microphone className="microphone-page-contact"/>
+                <Note className="note-page-contact"/>
+            </div>
             <h1 data-aos='fade-in'>Déroulement de la prise de contact</h1>
             <div className="line-container">
                 <span className="line line-left"></span>

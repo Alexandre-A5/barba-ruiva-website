@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals';
 import Homepage from './pages/homepage/Homepage';
 import Prestation from './pages/prestation/Prestation';
 import Contact from './pages/contact/Contact';
+import MentionsLegales from './pages/MentionLegales';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -29,6 +30,7 @@ root.render(
           <Route index element={<Homepage />} />
           <Route path="prestation" element={<Prestation />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="mentions-legales" element={<MentionsLegales />} />
         </Route>
       </Routes>
     </BrowserRouter>

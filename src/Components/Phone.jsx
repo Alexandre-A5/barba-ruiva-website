@@ -1,4 +1,4 @@
-import React, { Suspense, useRef } from 'react';
+import React, { Suspense, useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { PerspectiveCamera, OrbitControls, Environment } from '@react-three/drei';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
@@ -51,6 +51,9 @@ function PhoneModel({ url, rotation, color }) {
 }
 
 function Phone() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
   // Valeurs de rotation en radians (x, y, z)
   const rotation = [0, Math.PI / 3, 1]; // Rotation de 45 degrés autour de l'axe Y
 

@@ -13,7 +13,7 @@ const CalendlyWidget = () => {
   }, []);
 
   return (
-    <div>
+    <div className='calendly-container'>
       <div
         className="calendly-inline-widget"
         data-url="https://calendly.com/alexandreaugepro"  // Remplacez par votre URL Calendly

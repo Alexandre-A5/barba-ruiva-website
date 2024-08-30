@@ -52,7 +52,7 @@
 .first-step{
     display: flex;
     position: absolute;
-    left: 64px;
+    left: 76px;
     top:550px;
     font-size: 3vw;
     text-align: right;
@@ -92,7 +92,7 @@
 .third-step{
     display: flex;
     position: absolute;
-    left: 193px;
+    left: 207px;
     bottom: -500px;
     font-size: 3vw;
     text-align: right;
@@ -186,8 +186,52 @@
     height: 500px;
     border-radius: 20px;
 }
+.model3d-page-container{
+    position:absolute;
+    top:600px;
+}
+
+.headphones-page-contact{
+    position:relative;
+    top:0px;
+    right:100px;
+
+    width:400px;
+    height:400px;
+}
+
+.woofer-page-contact{
+    position:relative;
+    top:-100px;
+    left:400px;
+
+    width:200px;
+    height:200px;
+}
+
+.microphone-page-contact{
+    position:relative;
+    top:-200px;
+    right:200px;
+
+    width:300px;
+    height:300px;
+}
+
+.note-page-contact{
+    position:relative;
+    top:-300px;
+    left:400px;
+
+    width:300px;
+    height:300px;
+}
 
 @media screen and (max-width:600px){
+
+    .model3d-page-container{
+        display:none;
+    }
     .line-left{
         display: none;
     }
@@ -198,7 +242,10 @@
         height: 40vh;
     }
     .contact-page-container h1{
-        margin-top:100px;
+        margin-top:50px;
+        font-size: 7vw;
+        width:70%;
+        margin-bottom: 50px;
     }
     .first-orange-circle{
         width: 10px;
@@ -223,20 +270,20 @@
     }
 
     .first-step{
-        left:20px;
-        top:220px;
+        left:1px;
+        top:200px;
     }
     .second-step{
-        bottom:450px;
-        left:208px;
+        bottom:230px;
+        left:138px;
     }
     .third-step{
-        bottom:367px;
-        left:63px;
+        bottom:180px;
+        left:30px;
     }
     .fourth-step{
-        bottom:295px;
-        right:43px;
+        bottom:130px;
+        right:21px;
     }
 
     .contact-card{
@@ -253,5 +300,16 @@
     }
     .email{
         width: 100%;
+    }
+    .calendly-inline-widget{
+        width: 200px;
+        height: 200px;
+    }
+    .calendly-container{
+        display: flex;
+        justify-content: center;
+    }
+    .appointment h1{
+        font-size: 7vw;
     }
 }

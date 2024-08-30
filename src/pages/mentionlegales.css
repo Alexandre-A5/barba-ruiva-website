@@ -1,0 +1,8 @@
+.mentions-legales{
+    color:var(--second-color);
+    margin-top:100px;
+    padding: 0 60px;
+}
+.ml-container{
+    display:flex;
+}

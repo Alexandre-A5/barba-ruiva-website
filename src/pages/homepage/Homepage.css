@@ -312,7 +312,7 @@
   width: 300px;
   height: 300px;
   position: relative;
-  z-index: -1;
+  z-index: 3;
   touch-action: none;
 
   top:-50px;
@@ -322,10 +322,16 @@
 @media only screen and (max-width: 600px) {
   .profil-3dmodel,.presentation-model3d,.presta-model3d{
     display: none;
+    touch-action: auto;
+    z-index:-1;
   }
   .profil-subtitle{
     display: flex;
     margin:0;
+  }
+
+  .profil-subtitle h2{
+    margin:0 2px;
   }
   .presentation-container{
     margin-top:100px;
@@ -336,7 +342,7 @@
   }
 
   .profil-container img{
-    height: 30vh;
+    height: 50vh;
   }
 
   .presta-container{
@@ -344,9 +350,34 @@
     margin:50px 0;
   }
   .phone-box{
-    width: 100px;
-    height: 100px;
+    width: 250px;
+    height: 250px;
     margin-top:20px;
   }
 
+  .homepage-container h1{
+    font-size: 18vw;
+  }
+  .banner{
+    font-size: 3vw;
+    padding:5px 5px;
+    width: 70%;
+  }
+
+  .contact-container span{
+    font-size: 7vw;
+  }
+  .presta-container{
+    margin-top:100px;
+  }
+  .presta-container button{
+    font-size: 3.5vw;
+  }
+
+  .presta-container img{
+    width:70%;
+  }
+  .contact-container{
+    margin-top: 100px;
+  }
 }
