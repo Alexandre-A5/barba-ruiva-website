@@ -137,7 +137,7 @@ const Homepage = () => {
         />
 
         <p>Cours de guitare à Andlau et ses alentours avec un tarif de 15€ / heure</p>
-        <a href="/prestation"><button>En savoir plus</button></a>
+        <a href="/prestation">En savoir plus</a>
         <Suspense fallback={<div>Loading 3D models...</div>}>
           <div className="presta-model3d">
             <Note className="presta-note-box"/>

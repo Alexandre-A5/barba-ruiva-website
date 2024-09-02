@@ -160,7 +160,19 @@
     transition:1s;
   }
 
-  
+.presta-container a{
+  background-color: var(--second-color);
+  color:var(--complementary-color);
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5vw;
+  padding: 1vw 3vw;
+  border: none;
+  border-radius: 10px;
+  transition: 0.5s;
+  text-decoration: none;
+}
 
   .presta-container p{
     color :var(--second-color);
@@ -169,20 +181,9 @@
     width: 65%;
   }
 
-  .presta-container button {
-    background-color: var(--second-color);
-    color:var(--complementary-color);
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 1.5vw;
-    padding: 1vw 3vw;
-    border: none;
-    border-radius: 10px;
-    transition: 0.5s;
-  }
+ 
 
-  .presta-container button:hover{
+  .presta-container a:hover{
     cursor: pointer;
     background-color: var(--complementary-color);
     color:var(--second-color);

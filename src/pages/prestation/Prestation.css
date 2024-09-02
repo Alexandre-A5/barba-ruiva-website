@@ -118,4 +118,7 @@
         align-self:center;
         text-align: center;
     }
+    .model3d-presta-container{
+        display:none;
+    }
 }
